@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Budget Tool | Bedrock Bookkeeping — Chilliwack &amp; Fraser Valley</title>
+<meta name="description" content="Free budget tool. Log your income and fixed expenses to see your net income at a glance." />
+<meta name="theme-color" content="#0A0908" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+      <span class="logo-text">Bedrock Bookkeeping</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Pricing</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="budget-tracker.html" aria-current="page"><span class="nav-bounce">Budget Tool</span></a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-toggle nav-toggle-text" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">MENU</button>
+    </div>
+  </div>
+</header>
+
+<!-- TRN-04 Slide-Out Drawer: dims the page and slides a panel in from the right, links trail it on a stagger -->
+<div class="menu-scrim" id="menu-scrim"></div>
+<div class="mobile-menu" id="mobile-menu" inert>
+  <div class="mobile-menu-top">
+    <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+      <span class="logo-text">Bedrock Bookkeeping</span>
+    </a>
+    <button class="nav-toggle mobile-menu-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="index.html" style="--i:0"><span>Home</span></a>
+    <a href="index.html#services" style="--i:1"><span>Pricing</span></a>
+    <a href="index.html#about" style="--i:2"><span>About</span></a>
+    <a href="index.html#faq" style="--i:3"><span>FAQ</span></a>
+    <a href="budget-tracker.html" style="--i:4"><span class="nav-bounce-drawer">Budget Tool</span></a>
+    <a href="index.html#contact" style="--i:5"><span>Contact</span></a>
+  </nav>
+  <a class="btn btn-primary drawer-consult-btn" href="index.html#contact" style="--i:6"><span>Book a Free Consult</span></a>
+</div>
+
+<main id="main">
+
+  <section class="page-hero" id="tool-hero">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow">Free Tool</p>
+      <h1>Budget Tool</h1>
+      <p class="lede">Log your income and fixed monthly expenses below to see your net income at a glance. Nothing here is saved or sent anywhere, it stays in your browser and clears when you leave the page.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: var(--space-6);">
+    <div class="container">
+      <div class="form-card budget-card" data-reveal>
+
+        <div class="field-row two budget-date-row">
+          <div class="field">
+            <label for="budget-month">Month</label>
+            <select id="budget-month">
+              <option value="">Select month</option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="budget-year">Year</label>
+            <input type="number" id="budget-year" placeholder="2026" inputmode="numeric" />
+          </div>
+        </div>
+
+        <div class="budget-columns">
+          <div class="budget-col is-income">
+            <div class="budget-col-header">Income</div>
+            <div class="budget-rows" id="income-rows">
+              <div class="budget-row">
+                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 1 name" />
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 1 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 2 name" />
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 2 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 3 name" />
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 3 amount" /></div>
+              </div>
+            </div>
+            <button type="button" class="budget-add-btn" id="add-income-row">+ Add another income source</button>
+          </div>
+
+          <div class="budget-col is-expense">
+            <div class="budget-col-header">
+              Fixed Expenses
+              <span class="info-wrap">
+                <button type="button" class="info-btn" aria-label="What counts as a fixed expense?" aria-describedby="expense-info-tip">i</button>
+                <span class="info-tip" id="expense-info-tip" role="tooltip">
+                  <p>A fixed expense is a bill that costs about the same every month — rent, insurance, subscriptions, loan payments.</p>
+                  <p><strong>Gas for your vehicle doesn't count.</strong> It changes every month based on how much you drive, so it's not a fixed expense.</p>
+                </span>
+              </span>
+            </div>
+            <div class="budget-rows" id="expense-rows">
+              <div class="budget-row">
+                <div class="budget-name-wrap">
+                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 1 name" />
+                  <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
+                </div>
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 1 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <div class="budget-name-wrap">
+                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 2 name" />
+                  <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
+                </div>
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 2 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <div class="budget-name-wrap">
+                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 3 name" />
+                  <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
+                </div>
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 3 amount" /></div>
+              </div>
+            </div>
+            <button type="button" class="budget-add-btn" id="add-expense-row">+ Add another expense</button>
+          </div>
+        </div>
+
+        <div class="budget-totals">
+          <div class="budget-total-row">
+            <span>Total Income</span>
+            <span id="total-income">$0.00</span>
+          </div>
+          <div class="budget-total-row">
+            <span>Total Fixed Expenses</span>
+            <span id="total-expenses">$0.00</span>
+          </div>
+          <div class="budget-total-row is-net">
+            <span id="net-label">Net Income</span>
+            <span id="net-total">$0.00</span>
+          </div>
+        </div>
+
+        <div class="budget-print-wrap">
+          <button type="button" class="btn btn-ghost print-budget-btn" id="print-budget-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+            Print Budget
+          </button>
+        </div>
+
+        <p class="budget-consult-note">Want help making sense of the numbers? <a href="index.html#contact" class="budget-consult-link shimmer-text">Book a Free Consult</a></p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BGD Grid Worm: playable version of the homepage background worm -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="form-card worm-game-card" data-reveal>
+        <div class="worm-game-head">
+          <p class="eyebrow">Bonus</p>
+          <h2>Try playing the game!</h2>
+          <p class="lede">Use your arrow keys to guide the worm. Eat the food to grow as long as you can — just don't run into yourself.</p>
+        </div>
+        <div class="worm-game-hud">
+          <span>Length: <strong id="wormGameLength">3</strong></span>
+          <span>Best: <strong id="wormGameBest">0</strong></span>
+        </div>
+        <div class="worm-game-wrap">
+          <canvas id="wormGameCanvas" class="worm-game-canvas" tabindex="0" aria-label="Snake game: use the arrow keys to move the worm"></canvas>
+          <div class="worm-game-overlay" id="wormGameOverlay">
+            <div class="worm-game-overlay-inner">
+              <h3 id="wormGameOverlayTitle">Ready?</h3>
+              <p id="wormGameOverlayText">Click Start, then use your arrow keys to move.</p>
+              <button type="button" class="btn btn-primary" id="wormGameStartBtn">Start Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+          <span class="logo-text">Bedrock Bookkeeping</span>
+        </a>
+        <p>Monthly bookkeeping and financial reports for small businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="budget-tracker.html">Budget Tool</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:mikeyounie@hotmail.com">mikeyounie@hotmail.com</a></li>
+          <li><a href="tel:+16043168878">(604)-316-8878</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Bedrock Bookkeeping. All rights reserved.</span>
+      <span>Serving Chilliwack &amp; the Fraser Valley</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/budget-tracker.js" defer></script>
+<script src="js/worm-game.js" defer></script>
+</body>
+</html>

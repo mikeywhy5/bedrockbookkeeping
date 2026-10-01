@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bedrock Bookkeeping | Chilliwack &amp; Fraser Valley Bookkeeper</title>
+<meta name="description" content="Monthly bookkeeping, payroll, and reporting for small businesses across the Fraser Valley and beyond. QuickBooks Online certified. Plans from $300/month." />
+<meta property="og:title" content="Bedrock Bookkeeping — Fraser Valley, BC" />
+<meta property="og:description" content="Clear, accurate bookkeeping for small businesses in every field. QuickBooks Online. Based in Chilliwack, BC." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0A0908" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- TRN-01 Page Load Curtain: solid orange, splits open after 0.5s to reveal the site -->
+<div class="page-curtain" id="page-curtain" aria-hidden="true">
+  <div class="page-curtain-hero">
+    <h2 class="page-curtain-heading" id="curtain-heading"><span>Bedrock Bookkeeping</span></h2>
+  </div>
+  <div class="page-curtain-panel page-curtain-panel--left"></div>
+  <div class="page-curtain-panel page-curtain-panel--right"></div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+      <span class="logo-text" id="header-logo-text">Bedrock Bookkeeping</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#main" aria-current="page">Home</a>
+      <a href="#services">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="budget-tracker.html"><span class="nav-bounce">Budget Tool</span></a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-toggle nav-toggle-text" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">MENU</button>
+    </div>
+  </div>
+</header>
+
+<!-- TRN-04 Slide-Out Drawer: dims the page and slides a panel in from the right, links trail it on a stagger -->
+<div class="menu-scrim" id="menu-scrim"></div>
+<div class="mobile-menu" id="mobile-menu" inert>
+  <div class="mobile-menu-top">
+    <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+      <span class="logo-text">Bedrock Bookkeeping</span>
+    </a>
+    <button class="nav-toggle mobile-menu-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#main" style="--i:0"><span>Home</span></a>
+    <a href="#services" style="--i:1"><span>Pricing</span></a>
+    <a href="#about" style="--i:2"><span>About</span></a>
+    <a href="#faq" style="--i:3"><span>FAQ</span></a>
+    <a href="budget-tracker.html" style="--i:4"><span class="nav-bounce-drawer">Budget Tool</span></a>
+    <a href="#contact" style="--i:5"><span>Contact</span></a>
+  </nav>
+  <a class="btn btn-primary drawer-consult-btn" href="#contact" style="--i:6"><span>Book a Free Consult</span></a>
+</div>
+
+<main id="main">
+
+  <!-- BGD Grid Worm: wanders the background of the Budget Tool CTA section -->
+  <canvas id="wormCanvas" class="worm-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-photo" aria-hidden="true" id="heroPhotoDots">
+      <!-- Swap this placeholder for a real photo: <img src="assets/hero-photo.jpg" alt="" /> -->
+      <!-- BGD Reactive Dot Grid: dots light up orange near the cursor -->
+      <div class="hero-photo-dots"></div>
+      <div class="hero-photo-dots hero-photo-dots--hot" id="heroPhotoDotsHot"></div>
+    </div>
+    <div class="container">
+      <div class="hero-copy">
+        <p class="eyebrow">University Certified Bookkeeper</p>
+        <h1>Build Your Business on a <span class="shimmer-text hero-pop">Rock-Solid</span> <span class="hero-push">Financial</span> <span class="hero-push-conditional">Foundation</span></h1>
+        <p class="lede">At <span class="text-highlight">Bedrock Bookkeeping</span>, we provide reliable, accurate bookkeeping that gives business owners confidence in their numbers. Because every successful business starts with a strong foundation.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary hero-consult-btn" href="#contact"><span>Book a Free Consult</span></a>
+          <a class="btn btn-ghost" href="#services">See Pricing</a>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>
+            QuickBooks Online certified
+          </span>
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            Reply within 1 business day
+          </span>
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z"/></svg>
+            Every industry welcome
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tagline banner -->
+  <section class="tagline-banner" data-reveal hidden>
+    <div class="container">
+      <p class="eyebrow" style="justify-content:center;">Small Business Bookkeeping</p>
+      <p class="tagline-headline">A bookkeeper who treats your business like their own.</p>
+      <a class="tagline-sub" href="#contact">Let's work together.</a>
+      <div class="tagline-actions">
+        <a class="tagline-action" href="tel:+16043168878">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012.11 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+          Call Us: (604)-316-8878
+        </a>
+        <a class="tagline-action is-outline" href="mailto:mikeyounie@hotmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          mikeyounie@hotmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="page-hero" id="services">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="h1">Straightforward, simple pricing.</h2>
+      <p class="lede">Everything You Need. Just Choose Your Service.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: var(--space-6);">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <a class="pricing-tier" href="#contact" data-reveal-group="tiers">
+          <p class="tier-name h3">Monthly Bookkeeping Service</p>
+          <p class="tier-desc">For businesses that just need clean, accurate books.</p>
+          <p class="tier-price-note shimmer-text">Starting at</p>
+          <div class="tier-price">
+            <span class="amount">$300</span>
+            <span class="unit">/month</span>
+          </div>
+          <ul class="tier-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Monthly Bookkeeping</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Bank Reconciliation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Financial Reports (P&amp;L, Balance Sheet)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Payroll Support</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Accounts Payable/Receivable</li>
+          </ul>
+          <span class="btn btn-ghost">Book a Free Consult</span>
+        </a>
+
+        <a class="pricing-tier" href="#contact" data-reveal-group="tiers">
+          <p class="tier-name h3">Catch-Up and Clean-Up</p>
+          <p class="tier-desc">Behind on your books? We'll get you current.</p>
+          <p class="tier-price-note shimmer-text">Starting at</p>
+          <div class="tier-price">
+            <span class="amount">$600</span>
+            <span class="unit">one time</span>
+          </div>
+          <ul class="tier-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Historical transaction review</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Multi-period reconciliation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Error correction &amp; re-categorization</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Getting you audit- and tax-ready</li>
+          </ul>
+          <span class="btn btn-ghost">Book a Free Consult</span>
+        </a>
+
+        <a class="pricing-tier" href="#contact" data-reveal-group="tiers">
+          <p class="tier-name h3">QuickBooks Online Set-Up</p>
+          <p class="tier-desc">Get started right, from day one.</p>
+          <p class="tier-price-note shimmer-text">Starting at</p>
+          <div class="tier-price">
+            <span class="amount">$800</span>
+            <span class="unit">one time</span>
+          </div>
+          <ul class="tier-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Chart of accounts setup</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Bank &amp; app integrations</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>Migration from other software</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4L19 7"/></svg>One-on-one training session</li>
+          </ul>
+          <span class="btn btn-ghost">Book a Free Consult</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="page-hero" id="about">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="container">
+      <div class="owner-card" data-reveal id="ownerTiltCard">
+        <div class="owner-card-gloss" id="ownerTiltGloss" aria-hidden="true"></div>
+        <div class="owner-card-top">
+          <div class="owner-info">
+            <h3>Mike Younie</h3>
+            <p class="owner-title">Owner</p>
+            <p class="owner-bio">Mike is a certified bookkeeper, born and raised in Chilliwack, British Columbia, and the founder of Bedrock Bookkeeping.</p>
+            <p class="owner-bio">Mike has always had a natural talent for numbers and a passion for problem-solving. He decided to use those skills to work for himself, earning his Bookkeeping for Small Businesses certificate from the University of the Fraser Valley and becoming a QuickBooks ProAdvisor along the way.</p>
+            <p class="owner-bio">Outside of bookkeeping, Mike stays busy running his other businesses, building websites like the one you're on now, and working on photography and videography projects. He also has a passion for cars and extreme sports.</p>
+          </div>
+          <div class="owner-photo">
+            <!-- Temporary photo, swap for a real headshot later -->
+            <img src="assets/owner-photo.jpg" alt="Mike Younie" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-choose-section">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <h2 id="whyChooseHeading"><span class="text-fill-head" id="whyChooseFill">Why Choose</span> <span class="text-fill-head" id="whyChooseCapsWord">Bedrock Bookkeeping</span>?</h2>
+      </div>
+      <div class="stack-cards">
+        <div class="value-item stack-card" style="--i:0">
+          <span class="num">01</span>
+          <div>
+            <h3>Rock-Solid Accuracy</h3>
+            <p>Your financial records are maintained with precision, giving you confidence that your books are always up to date.</p>
+          </div>
+        </div>
+        <div class="value-item stack-card" style="--i:1">
+          <span class="num">02</span>
+          <div>
+            <h3>A Foundation You Can Trust</h3>
+            <p>Dependability is at the core of everything we do. You can count on consistent communication, honest advice, and reliable service.</p>
+          </div>
+        </div>
+        <div class="value-item stack-card" style="--i:2">
+          <span class="num">03</span>
+          <div>
+            <h3>More Time for Your Business</h3>
+            <p>Stop worrying about bookkeeping and focus on what you do best while we handle the numbers.</p>
+          </div>
+        </div>
+        <div class="value-item stack-card" style="--i:3">
+          <span class="num">04</span>
+          <div>
+            <h3>Financial Clarity</h3>
+            <p>Know exactly where your business stands with organized records and meaningful financial reports.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head centered" data-reveal>
+        <p class="eyebrow" style="justify-content:center;">FAQ</p>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" data-reveal>
+        <details class="faq-item">
+          <summary>What is bookkeeping for small businesses?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="faq-answer">Bookkeeping is the foundation of a healthy business. It involves accurately recording, organizing, and maintaining your financial transactions—from income and expenses to invoices and payroll.</p>
+          <p class="faq-answer">Whether you're just starting out or managing a growing business, reliable bookkeeping gives you a clear understanding of where your money is coming from, where it's going, and how your business is performing.</p>
+          <p class="faq-answer">At <span class="faq-brand">BEDROCK BOOKKEEPING</span>, we make the process simple and stress-free, giving you more time to focus on what matters most, running and growing your business.</p>
+          <p class="faq-answer">Getting started is easy. Schedule a free consultation with us to discuss your business, your bookkeeping needs, and your goals. From there, we'll create a tailored bookkeeping solution designed to give you clarity and confidence in your finances.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why hire Bedrock Bookkeeping instead of an in-house bookkeeper?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="faq-answer">Hiring an employee costs more than just their salary. Employer-paid expenses—including CPP and EI contributions, vacation pay, paid sick days, and other benefits—can add significantly to the true cost of maintaining an in-house employee.</p>
+          <p class="faq-answer">There are also the hidden costs of recruiting, training, performance management, and employee retention. When you hire in-house, you're also limited to one individual's experience, availability, and capacity.</p>
+          <p class="faq-answer">With <span class="faq-brand">BEDROCK BOOKKEEPING</span>, you get a dedicated bookkeeping professional focused on keeping your finances organized and accurate—without the added costs and responsibilities of hiring an employee.</p>
+          <p class="faq-answer">You'll know exactly what your monthly bookkeeping costs are while receiving personalized, professional service tailored to your business. With clear and reliable financial information, you can make informed, data-driven decisions with greater confidence.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does bookkeeping cost for a small business?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="faq-answer">The cost of bookkeeping for a small business can vary depending on your unique needs. Generally, you can expect to invest between $200 and $600 per month. Your final cost will depend on factors such as the number of monthly transactions, the complexity of your finances, and the specific services your business requires.</p>
+          <p class="faq-answer">At lower price points, bookkeeping services typically include essential tasks such as transaction recording and monthly financial reporting. More comprehensive services may include payroll support, tax compliance assistance, financial analysis, and additional advisory services.</p>
+          <p class="faq-answer">At <span class="faq-brand">BEDROCK BOOKKEEPING</span>, we understand that no two businesses are alike. That's why we offer customized bookkeeping solutions tailored to your specific needs and budget. We'll work with you to build a plan that provides the right level of support—giving you the financial clarity and confidence to focus on growing your business.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are bookkeeping services tax-deductible?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="faq-answer">Absolutely! Professional bookkeeping services are generally considered a legitimate business expense and may be tax-deductible.</p>
+          <p class="faq-answer">By investing in professional bookkeeping, you're not only keeping your finances accurate and organized, you may also reduce your taxable business income. It's an investment that provides valuable financial clarity while potentially offering tax benefits.</p>
+          <p class="faq-answer">At <span class="faq-brand">BEDROCK BOOKKEEPING</span>, we help you stay organized, informed, and focused on what matters most: growing your business.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is the best bookkeeping software for small businesses?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <p class="faq-answer">Finding the right bookkeeping software depends on the unique needs of your business. Popular platforms like QuickBooks, Xero, and FreshBooks offer powerful features designed to help businesses manage their finances and scale as they grow.</p>
+          <p class="faq-answer">At <span class="faq-brand">BEDROCK BOOKKEEPING</span>, we specialize in QuickBooks and are certified QuickBooks experts. We prefer "QBO" for its comprehensive features, powerful integrations, and ability to provide a clear picture of your business finances.</p>
+          <p class="faq-answer">While QuickBooks is an incredibly capable platform, its extensive tools and features can feel overwhelming when you're managing a business on your own. That's where we come in.</p>
+          <p class="faq-answer">We'll handle the bookkeeping for you and help you get the most out of your QuickBooks account—so you can benefit from powerful financial tools without needing to become an expert yourself.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Budget Tool CTA -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="panel-dark budget-cta-panel" data-reveal>
+        <h2>Track your cash flow with confidence.</h2>
+        <p class="lede">Try our free, easy-to-use budget tool and see exactly where your money is going each month.</p>
+        <div class="panel-actions">
+          <a class="btn btn-primary budget-tool-cta-btn" href="budget-tracker.html">Try the Free Budget Tool</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="form-card" data-reveal>
+        <div class="section-head" style="margin-bottom: var(--space-6);">
+          <p class="eyebrow">Tell us about your business</p>
+          <h2>Get your free consultation</h2>
+        </div>
+        <form id="contact-form" action="https://formspree.io/f/xaqrgnvd" method="POST">
+          <div class="field">
+            <label for="first-name">First Name <span class="required">*</span></label>
+            <input type="text" id="first-name" name="first_name" required />
+          </div>
+          <div class="field">
+            <label for="last-name">Last Name <span class="required">*</span></label>
+            <input type="text" id="last-name" name="last_name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <div class="field">
+            <label for="business-name">Business Name <span class="required">*</span></label>
+            <input type="text" id="business-name" name="business_name" required />
+          </div>
+          <div class="field">
+            <label for="services-field">What services are you looking for?</label>
+            <select id="services-field" name="services">
+              <option value="">Select one</option>
+              <option value="Monthly Bookkeeping - Existing Business">Monthly Bookkeeping - Existing Business</option>
+              <option value="Monthly Bookkeeping - New Start-Up Business">Monthly Bookkeeping - New Start-Up Business</option>
+              <option value="Clean-Up/Catch-Up Services">Clean-Up/Catch-Up Services</option>
+              <option value="QBO Set Up">QBO Set Up</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="current-software">What are you currently using to keep track of your bookkeeping?</label>
+            <select id="current-software" name="current_software">
+              <option value="">Select one</option>
+              <option value="QuickBooks Online">QuickBooks Online</option>
+              <option value="QuickBooks Desktop">QuickBooks Desktop</option>
+              <option value="Sage">Sage</option>
+              <option value="Xero">Xero</option>
+              <option value="Excel">Excel</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Are you willing to use QuickBooks Online?</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="willing_qbo" value="Yes" /> Yes</label>
+              <label class="radio-pill"><input type="radio" name="willing_qbo" value="No" /> No</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Are you willing to use cloud-based software to collaborate with us?</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="willing_cloud" value="Yes" /> Yes</label>
+              <label class="radio-pill"><input type="radio" name="willing_cloud" value="No" /> No</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Our minimum monthly package is $300 per month. Is this within your budget?</label>
+            <div class="radio-group">
+              <label class="radio-pill"><input type="radio" name="budget_fit" value="Yes" /> Yes</label>
+              <label class="radio-pill"><input type="radio" name="budget_fit" value="No" /> No</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="referral-source">How did you hear about us?</label>
+            <select id="referral-source" name="referral_source">
+              <option value="">Select one</option>
+              <option value="Google">Google</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Referral">Referral</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="referred-by">If you were referred, please tell us who referred you in the box below</label>
+            <input type="text" id="referred-by" name="referred_by" placeholder="Name of the person who referred you" />
+          </div>
+          <button class="btn btn-primary btn-load-success" type="submit" style="width:100%; margin-top: var(--space-2);">
+            <span>Submit</span>
+            <i class="btn-load-spin" aria-hidden="true"></i>
+            <svg class="btn-load-tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 7"/></svg>
+          </button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-layout">
+
+      <div data-reveal>
+        <div class="contact-cta">
+          <!-- BGD Drawing Border (continuous orbit) -->
+          <svg class="contact-cta-draw" id="contactCtaDraw" aria-hidden="true">
+            <rect class="contact-cta-draw-seg-template" x="0.75" y="0.75" rx="22" ry="22" width="calc(100% - 1.5px)" height="calc(100% - 1.5px)"/>
+          </svg>
+          <div class="contact-cta-icon-row">
+            <span class="contact-cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012.11 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+            </span>
+            <span class="contact-cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+            </span>
+          </div>
+          <h2>Ready to get started?</h2>
+          <p class="contact-cta-contact-lines">Phone: <a href="tel:+16043168878" class="contact-cta-heading-link">(604)-316-8878</a><br>Email: <a href="mailto:mikeyounie@hotmail.com?subject=Free%20Consultation%20Request" class="contact-cta-heading-link">mikeyounie@hotmail.com</a></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo-btn" href="index.html" aria-label="Bedrock Bookkeeping — Return to entrance">
+          <span class="logo-text">Bedrock Bookkeeping</span>
+        </a>
+        <p>Monthly bookkeeping and financial reports for small businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#main">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="budget-tracker.html">Budget Tool</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:mikeyounie@hotmail.com">mikeyounie@hotmail.com</a></li>
+          <li><a href="tel:+16043168878">(604)-316-8878</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Bedrock Bookkeeping. All rights reserved.</span>
+      <span>Serving Chilliwack &amp; the Fraser Valley</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
