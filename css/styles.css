@@ -519,6 +519,9 @@ h3, .h3 {
   text-transform: uppercase;
   color: #FFFFFF;
 }
+@media (max-width: 480px) {
+  .page-curtain-heading { font-size: max(1.5rem, 11.5vw); }
+}
 .page-curtain-heading span { display: block; transform: translateY(110%); }
 .page-curtain.is-open .page-curtain-heading span {
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.07s;
@@ -715,6 +718,40 @@ h3, .h3 {
   line-height: 1;
   padding: 3px 10px 5px;
   transform: translateY(0);
+}
+
+/* phones: the header starts as just the centered wordmark; once it shrinks
+   on scroll the MENU button fades in and the wordmark slides left to make
+   room. The slide uses left + translate (both animatable) so it moves in
+   step with the header's own 0.38s shrink. */
+@media (max-width: 767px) {
+  .nav-bar > .logo-btn {
+    position: relative;
+    left: 50%;
+    translate: -50% 0;
+    transition: left 0.38s cubic-bezier(0.65, 0, 0.35, 1),
+                translate 0.38s cubic-bezier(0.65, 0, 0.35, 1),
+                transform var(--duration-fast) var(--ease-out),
+                opacity var(--duration-fast) var(--ease-out);
+  }
+  .site-header.is-scrolled .nav-bar > .logo-btn {
+    left: 0;
+    translate: 0 0;
+  }
+  .nav-actions {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.38s cubic-bezier(0.65, 0, 0.35, 1),
+                visibility 0.38s;
+  }
+  .site-header.is-scrolled .nav-actions {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .nav-bar > .logo-btn,
+  .nav-actions { transition: none; }
 }
 
 .nav-links { display: none; align-items: center; gap: var(--space-6); }
@@ -1393,6 +1430,27 @@ h3, .h3 {
   .pricing-tier .btn-ghost,
   .pricing-tier .btn-ghost::before { transition: none; }
 }
+/* phones have no hover to hint that the cards are tappable, so each one
+   breathes a soft orange glow instead, staggered so it ripples down the
+   stack. Border/shadow only, so it can't fight the scroll-reveal's transform. */
+@keyframes tier-pulse {
+  0%, 100% {
+    border-color: var(--color-border);
+    box-shadow: 0 0 0 0 rgba(255, 122, 26, 0), 0 0 0 rgba(255, 122, 26, 0);
+  }
+  50% {
+    border-color: rgba(255, 122, 26, 0.7);
+    box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.35), 0 0 28px rgba(255, 122, 26, 0.24);
+  }
+}
+@media (max-width: 767px) {
+  .pricing-tier { animation: tier-pulse 3.6s ease-in-out infinite; }
+  .pricing-tier:nth-child(2) { animation-delay: 1.2s; }
+  .pricing-tier:nth-child(3) { animation-delay: 2.4s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricing-tier { animation: none; }
+}
 .pricing-tier.is-featured {
   border-color: var(--color-accent);
   background: linear-gradient(165deg, var(--color-surface-tint), var(--color-surface) 65%);
@@ -2057,6 +2115,10 @@ h3, .h3 {
 }
 
 /* ---- Playable Grid Worm (budget tool page) ---- */
+/* needs arrow keys, so it's desktop-only */
+@media (max-width: 767px) {
+  .worm-game-section { display: none; }
+}
 .worm-game-head { text-align: center; margin-bottom: var(--space-5); }
 .worm-game-head .eyebrow { justify-content: center; font-size: var(--font-size-base); }
 .worm-game-head .lede { max-width: 52ch; margin-inline: auto; margin-top: var(--space-3); }

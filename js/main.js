@@ -6,6 +6,42 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---- No hover animations on mobile ---- */
+  // Touch browsers leave :hover stuck on whatever was last tapped, so every
+  // hover animation replays on tap. While the viewport is phone-sized (or the
+  // device can't hover) each :hover selector is swapped for one that never
+  // matches; :focus-visible / :focus-within selectors in the same rule list
+  // survive, and everything is restored if the condition stops applying.
+  var noHoverQuery = window.matchMedia("(max-width: 767px), (hover: none)");
+  var hoverRules = [];
+
+  function collectHoverRules(rules) {
+    Array.prototype.forEach.call(rules, function (rule) {
+      if (rule.selectorText) {
+        if (rule.selectorText.indexOf(":hover") !== -1) {
+          hoverRules.push({ rule: rule, original: rule.selectorText });
+        }
+      } else if (rule.cssRules) {
+        collectHoverRules(rule.cssRules);
+      }
+    });
+  }
+
+  Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+    try { collectHoverRules(sheet.cssRules); } catch (e) { /* cross-origin sheet */ }
+  });
+
+  function applyNoHover() {
+    hoverRules.forEach(function (item) {
+      item.rule.selectorText = noHoverQuery.matches
+        ? item.original.replace(/:hover/g, ":not(*)")
+        : item.original;
+    });
+  }
+
+  applyNoHover();
+  noHoverQuery.addEventListener("change", applyNoHover);
+
   /* ---- BGD Reactive Dot Grid (hero photo placeholder) ---- */
   var heroPhotoDots = document.getElementById("heroPhotoDots");
   var heroPhotoDotsHot = document.getElementById("heroPhotoDotsHot");
@@ -377,6 +413,7 @@
   if (tiltCard && tiltGloss && !prefersReducedMotion) {
     var TILT_MAX = 8; // degrees, kept subtle for a content-heavy card
     tiltCard.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse" || noHoverQuery.matches) return;
       var r = tiltCard.getBoundingClientRect();
       var px = (e.clientX - r.left) / r.width;
       var py = (e.clientY - r.top) / r.height;
