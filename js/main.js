@@ -432,6 +432,57 @@
     });
   }
 
+  /* ---- SCR Horizontal Scroll Section (pricing cards, phones only) ---- */
+  // A tall runway holds a sticky viewport; vertical scroll through the runway
+  // is remapped onto translateX of the card track. The runway is sized to the
+  // sideways distance so one pixel of scroll moves the cards about one pixel.
+  var pricingRunway = document.getElementById("pricingRunway");
+  var pricingTrack = document.getElementById("pricingTrack");
+  var pricingSticky = pricingRunway && pricingRunway.querySelector(".pricing-sticky");
+  // keep this identical to the media query on the pricing rules in styles.css
+  var pricingQuery = window.matchMedia("(max-width: 767px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)");
+  if (pricingRunway && pricingTrack && pricingSticky) {
+    var pricingDistance = 0;
+    var pricingTicking = false;
+
+    var updatePricing = function () {
+      pricingTicking = false;
+      if (!pricingQuery.matches) return;
+      var pinTop = parseFloat(getComputedStyle(pricingSticky).top) || 0;
+      var rect = pricingRunway.getBoundingClientRect();
+      var total = rect.height - pricingSticky.offsetHeight;
+      var p = total > 0 ? Math.min(Math.max((pinTop - rect.top) / total, 0), 1) : 0;
+      pricingTrack.style.transform = "translate3d(" + (-p * pricingDistance) + "px,0,0)";
+    };
+
+    var sizePricing = function () {
+      if (!pricingQuery.matches) {
+        pricingRunway.style.height = "";
+        pricingTrack.style.transform = "";
+        return;
+      }
+      pricingTrack.style.transform = "none"; // measure from the untransformed position
+      var last = pricingTrack.lastElementChild;
+      var endPad = parseFloat(getComputedStyle(pricingTrack).paddingRight) || 0;
+      pricingDistance = Math.max(0, last.offsetLeft + last.offsetWidth + endPad - pricingSticky.clientWidth);
+      pricingRunway.style.height = (pricingSticky.offsetHeight + pricingDistance) + "px";
+      updatePricing();
+    };
+
+    if (!prefersReducedMotion) {
+      sizePricing();
+      window.addEventListener("load", sizePricing);
+      window.addEventListener("resize", sizePricing, { passive: true });
+      pricingQuery.addEventListener("change", sizePricing);
+      window.addEventListener("scroll", function () {
+        if (!pricingTicking) {
+          window.requestAnimationFrame(updatePricing);
+          pricingTicking = true;
+        }
+      }, { passive: true });
+    }
+  }
+
   /* ---- SCR Text Fills on Scroll ---- */
   var whyChooseHeading = document.getElementById("whyChooseHeading");
   var whyChooseFill = document.getElementById("whyChooseFill");
@@ -562,8 +613,14 @@
   var header = document.querySelector(".site-header");
   if (header) {
     var headerTicking = false;
+    // Shrink past 60px, grow back under 10px. Shrinking the sticky header
+    // shortens the page, which can nudge scrollY back down ~20px; a single
+    // shared threshold would then flip the header straight back and forth.
     var updateHeader = function () {
-      header.classList.toggle("is-scrolled", window.scrollY > 40);
+      var y = window.scrollY;
+      var scrolled = header.classList.contains("is-scrolled");
+      if (!scrolled && y > 60) header.classList.add("is-scrolled");
+      else if (scrolled && y < 10) header.classList.remove("is-scrolled");
       headerTicking = false;
     };
     updateHeader();

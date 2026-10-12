@@ -167,6 +167,13 @@ input, textarea, select { font: inherit; color: inherit; }
 }
 #whyChooseCapsWord { --fill-color: #FFFFFF; }
 #whyChooseCapsWord span.is-capped { text-transform: uppercase; }
+/* phones: no scroll-driven fill. Show the finished heading outright; the
+   !important beats the --p value the scroll script writes inline. */
+@media (max-width: 767px) {
+  .text-fill-head { --p: 100% !important; }
+  #whyChooseCapsWord span { text-transform: uppercase; }
+  .section.why-choose-section { padding-top: var(--space-8); }
+}
 @media (prefers-reduced-motion: reduce) {
   .text-fill-head { background: none; color: var(--color-ink); }
 }
@@ -741,12 +748,15 @@ h3, .h3 {
   .nav-actions {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.38s cubic-bezier(0.65, 0, 0.35, 1),
-                visibility 0.38s;
+    transition: opacity 0.18s ease-in, visibility 0.18s;
   }
+  /* the delay holds MENU back until the 0.38s shrink has finished; the
+     un-scrolled rule above has no delay, so it vanishes right away */
   .site-header.is-scrolled .nav-actions {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s ease-out 0.38s,
+                visibility 0s linear 0.38s;
   }
 }
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
@@ -1383,6 +1393,43 @@ h3, .h3 {
 @media (min-width: 860px) {
   .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
 }
+/* ---- SCR Horizontal Scroll Section (phones) ----
+   The runway is a tall spacer (its height is set from script); the sticky
+   viewport inside it pins under the header while the page scrolls past, and
+   script turns that vertical scroll distance into sideways movement of the
+   track. Cards bleed to both screen edges and the next one peeks in. */
+/* Needs a reasonably tall screen (landscape phones just get the normal stack)
+   and uses svh so the pinned height doesn't change as the browser's address
+   bar slides away mid-scroll. */
+@media (max-width: 767px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+  .js-enabled .pricing-runway { margin-inline: calc(-1 * var(--space-5)); }
+  .js-enabled .pricing-sticky {
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    height: calc(100svh - 72px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  /* trimmed so a whole card fits inside the pinned area on shorter phones */
+  .js-enabled .pricing-grid .pricing-tier { padding: var(--space-6) var(--space-6) var(--space-5); }
+  .js-enabled .pricing-grid .tier-desc { margin-bottom: var(--space-5); }
+  .js-enabled .pricing-grid .tier-price { margin-bottom: var(--space-5); padding-bottom: var(--space-5); }
+  .js-enabled .pricing-grid .tier-features { margin-bottom: var(--space-5); }
+  .js-enabled .pricing-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: var(--space-5);
+    padding-inline: var(--space-5);
+    will-change: transform;
+  }
+  .js-enabled .pricing-grid .pricing-tier {
+    flex: 0 0 min(82vw, 340px);
+    height: auto;
+  }
+}
 .pricing-tier {
   position: relative;
   display: flex;
@@ -1789,6 +1836,17 @@ h3, .h3 {
   transition: color var(--duration-fast) var(--ease-out);
 }
 .contact-cta-heading-link:hover { color: var(--color-accent); }
+/* phones: the unbreakable email line plus 64px side padding was forcing the
+   box past the screen edge. Let the grid item shrink to the page width, trim
+   the padding, and size the contact lines to fit. */
+@media (max-width: 767px) {
+  .contact-layout > * { min-width: 0; }
+  .contact-cta { padding-inline: var(--space-5); }
+  .contact-cta-contact-lines {
+    font-size: var(--font-size-lg);
+    overflow-wrap: anywhere;
+  }
+}
 
 .map-frame {
   margin-top: var(--space-5);
@@ -1828,6 +1886,20 @@ h3, .h3 {
   background: var(--color-surface-tint);
   outline: none;
   box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+/* phones: the native select arrows render black on the dark field, so swap
+   them for a white up/down arrow. The #contact-form id beats the shorthand
+   `background` in .field select:focus, which would otherwise erase it. */
+@media (max-width: 767px) {
+  #contact-form select {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 16' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6L6 2.5 9.5 6M2.5 10L6 13.5 9.5 10'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px 16px;
+  }
 }
 .field-hint { font-size: var(--font-size-sm); color: var(--color-muted); margin-top: var(--space-2); }
 .field-row { display: grid; gap: var(--space-5); }
