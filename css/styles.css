@@ -732,18 +732,18 @@ h3, .h3 {
    room. The slide uses left + translate (both animatable) so it moves in
    step with the header's own 0.38s shrink. */
 @media (max-width: 767px) {
-  .nav-bar > .logo-btn {
-    position: relative;
-    left: 50%;
-    translate: -50% 0;
-    transition: left 0.38s cubic-bezier(0.65, 0, 0.35, 1),
-                translate 0.38s cubic-bezier(0.65, 0, 0.35, 1),
-                transform var(--duration-fast) var(--ease-out),
+  /* The bar is a size container so the wordmark can be centered with cqw
+     (the bar's content width) and slid with transform alone; animating
+     left/margins instead forced a layout pass every frame and stuttered. */
+  .nav-bar { container-type: inline-size; }
+  .site-header .nav-bar > .logo-btn {
+    transform: translateX(calc(50cqw - 50%));
+    will-change: transform;
+    transition: transform 0.38s cubic-bezier(0.65, 0, 0.35, 1),
                 opacity var(--duration-fast) var(--ease-out);
   }
   .site-header.is-scrolled .nav-bar > .logo-btn {
-    left: 0;
-    translate: 0 0;
+    transform: translateX(0);
   }
   .nav-actions {
     opacity: 0;

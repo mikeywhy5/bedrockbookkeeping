@@ -27,13 +27,21 @@
     });
   }
 
-  Array.prototype.forEach.call(document.styleSheets, function (sheet) {
-    try { collectHoverRules(sheet.cssRules); } catch (e) { /* cross-origin sheet */ }
-  });
+  function gatherHoverRules() {
+    hoverRules = [];
+    Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+      try { collectHoverRules(sheet.cssRules); } catch (e) { /* cross-origin sheet */ }
+    });
+  }
+  gatherHoverRules();
 
+  var noHoverApplied = false;
   function applyNoHover() {
+    var want = noHoverQuery.matches;
+    if (want === noHoverApplied) return; // rewriting selectors restyles the page, so only on a real change
+    noHoverApplied = want;
     hoverRules.forEach(function (item) {
-      item.rule.selectorText = noHoverQuery.matches
+      item.rule.selectorText = want
         ? item.original.replace(/:hover/g, ":not(*)")
         : item.original;
     });
@@ -41,6 +49,16 @@
 
   applyNoHover();
   noHoverQuery.addEventListener("change", applyNoHover);
+  // some browsers report the final viewport size only after load, so re-check
+  window.addEventListener("resize", applyNoHover, { passive: true });
+  window.addEventListener("load", function () {
+    // the stylesheet can still be empty when this script first runs
+    if (!hoverRules.length) {
+      gatherHoverRules();
+      noHoverApplied = false;
+    }
+    applyNoHover();
+  });
 
   /* ---- BGD Reactive Dot Grid (hero photo placeholder) ---- */
   var heroPhotoDots = document.getElementById("heroPhotoDots");
@@ -444,10 +462,20 @@
   if (pricingRunway && pricingTrack && pricingSticky) {
     var pricingDistance = 0;
     var pricingTicking = false;
+    var pricingSized = false;
+
+    // Ask the layout itself instead of trusting a media query that was
+    // checked once at load: the sideways layout is on exactly when the CSS
+    // has made the viewport sticky, whatever the browser reported at the time.
+    var pricingActive = function () {
+      return getComputedStyle(pricingSticky).position === "sticky";
+    };
 
     var updatePricing = function () {
       pricingTicking = false;
-      if (!pricingQuery.matches) return;
+      if (!pricingActive()) return;
+      // viewport settled after load (or an earlier measurement was skipped)
+      if (!pricingSized) { sizePricing(); return; }
       var pinTop = parseFloat(getComputedStyle(pricingSticky).top) || 0;
       var rect = pricingRunway.getBoundingClientRect();
       var total = rect.height - pricingSticky.offsetHeight;
@@ -456,9 +484,10 @@
     };
 
     var sizePricing = function () {
-      if (!pricingQuery.matches) {
+      if (!pricingActive()) {
         pricingRunway.style.height = "";
         pricingTrack.style.transform = "";
+        pricingSized = false;
         return;
       }
       pricingTrack.style.transform = "none"; // measure from the untransformed position
@@ -466,21 +495,23 @@
       var endPad = parseFloat(getComputedStyle(pricingTrack).paddingRight) || 0;
       pricingDistance = Math.max(0, last.offsetLeft + last.offsetWidth + endPad - pricingSticky.clientWidth);
       pricingRunway.style.height = (pricingSticky.offsetHeight + pricingDistance) + "px";
+      pricingSized = true;
       updatePricing();
     };
 
-    if (!prefersReducedMotion) {
-      sizePricing();
-      window.addEventListener("load", sizePricing);
-      window.addEventListener("resize", sizePricing, { passive: true });
-      pricingQuery.addEventListener("change", sizePricing);
-      window.addEventListener("scroll", function () {
-        if (!pricingTicking) {
-          window.requestAnimationFrame(updatePricing);
-          pricingTicking = true;
-        }
-      }, { passive: true });
-    }
+    // No reduced-motion check here on purpose: the CSS already turns the
+    // sideways layout off for it, and pricingActive() just follows the CSS,
+    // so there's no load-time flag that could get stuck on the wrong value.
+    sizePricing();
+    window.addEventListener("load", sizePricing);
+    window.addEventListener("resize", sizePricing, { passive: true });
+    pricingQuery.addEventListener("change", sizePricing);
+    window.addEventListener("scroll", function () {
+      if (!pricingTicking) {
+        window.requestAnimationFrame(updatePricing);
+        pricingTicking = true;
+      }
+    }, { passive: true });
   }
 
   /* ---- SCR Text Fills on Scroll ---- */
