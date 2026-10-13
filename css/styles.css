@@ -1390,8 +1390,10 @@ h3, .h3 {
   gap: var(--space-7);
   align-items: start;
 }
+/* four cards: a 2x2 grid keeps each card wide enough to read (four across
+   would squeeze them to ~250px, and three across orphans the fourth) */
 @media (min-width: 860px) {
-  .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 }
 /* ---- SCR Horizontal Scroll Section (phones) ----
    The runway is a tall spacer (its height is set from script); the sticky
@@ -1492,8 +1494,9 @@ h3, .h3 {
 }
 @media (max-width: 767px) {
   .pricing-tier { animation: tier-pulse 3.6s ease-in-out infinite; }
-  .pricing-tier:nth-child(2) { animation-delay: 1.2s; }
-  .pricing-tier:nth-child(3) { animation-delay: 2.4s; }
+  .pricing-tier:nth-child(2) { animation-delay: 0.9s; }
+  .pricing-tier:nth-child(3) { animation-delay: 1.8s; }
+  .pricing-tier:nth-child(4) { animation-delay: 2.7s; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pricing-tier { animation: none; }
