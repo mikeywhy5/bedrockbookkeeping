@@ -7,7 +7,7 @@
 <meta name="description" content="Free budget tool. Log your income and fixed expenses to see your net income at a glance." />
 <meta name="theme-color" content="#0A0908" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
-<link rel="stylesheet" href="css/styles.css?v=4" />
+<link rel="stylesheet" href="css/styles.css?v=5" />
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -98,15 +98,15 @@
             <div class="budget-col-header">Income</div>
             <div class="budget-rows" id="income-rows">
               <div class="budget-row">
-                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 1 name" />
+                <input type="text" class="budget-row-name" list="income-sources" placeholder="Source name" aria-label="Income source 1 name" />
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 1 amount" /></div>
               </div>
               <div class="budget-row">
-                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 2 name" />
+                <input type="text" class="budget-row-name" list="income-sources" placeholder="Source name" aria-label="Income source 2 name" />
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 2 amount" /></div>
               </div>
               <div class="budget-row">
-                <input type="text" class="budget-row-name" placeholder="Source name" aria-label="Income source 3 name" />
+                <input type="text" class="budget-row-name" list="income-sources" placeholder="Source name" aria-label="Income source 3 name" />
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Income source 3 amount" /></div>
               </div>
             </div>
@@ -127,29 +127,83 @@
             <div class="budget-rows" id="expense-rows">
               <div class="budget-row">
                 <div class="budget-name-wrap">
-                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 1 name" />
+                  <input type="text" class="budget-row-name" list="expense-sources" placeholder="Expense name" aria-label="Expense 1 name" />
                   <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
                 </div>
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 1 amount" /></div>
               </div>
               <div class="budget-row">
                 <div class="budget-name-wrap">
-                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 2 name" />
+                  <input type="text" class="budget-row-name" list="expense-sources" placeholder="Expense name" aria-label="Expense 2 name" />
                   <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
                 </div>
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 2 amount" /></div>
               </div>
               <div class="budget-row">
                 <div class="budget-name-wrap">
-                  <input type="text" class="budget-row-name" placeholder="Expense name" aria-label="Expense 3 name" />
+                  <input type="text" class="budget-row-name" list="expense-sources" placeholder="Expense name" aria-label="Expense 3 name" />
                   <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
                 </div>
                 <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 3 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <div class="budget-name-wrap">
+                  <input type="text" class="budget-row-name" list="expense-sources" placeholder="Expense name" aria-label="Expense 4 name" />
+                  <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
+                </div>
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 4 amount" /></div>
+              </div>
+              <div class="budget-row">
+                <div class="budget-name-wrap">
+                  <input type="text" class="budget-row-name" list="expense-sources" placeholder="Expense name" aria-label="Expense 5 name" />
+                  <p class="budget-gas-warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a1 1 0 00.87 1.5h18.62a1 1 0 00.87-1.5L13.71 3.86a1 1 0 00-1.72 0z"/></svg>Gas isn't a fixed expense — it changes every month based on how much you drive. You can still add it if you'd like.</p>
+                </div>
+                <div class="budget-amount-wrap"><span class="budget-currency">$</span><input type="number" inputmode="decimal" class="budget-row-amount" placeholder="0.00" aria-label="Expense 5 amount" /></div>
               </div>
             </div>
             <button type="button" class="budget-add-btn" id="add-expense-row">+ Add another expense</button>
           </div>
         </div>
+
+        <!-- suggestions for the name fields; people can still type their own -->
+        <datalist id="income-sources">
+          <option value="Salary / Wages"></option>
+          <option value="Business Income"></option>
+          <option value="Self-Employment"></option>
+          <option value="Freelance / Contract Work"></option>
+          <option value="Commissions"></option>
+          <option value="Bonuses / Tips"></option>
+          <option value="Rental Income"></option>
+          <option value="Investment Income"></option>
+          <option value="Dividends"></option>
+          <option value="Interest"></option>
+          <option value="Pension"></option>
+          <option value="Government Benefits"></option>
+          <option value="Child / Spousal Support"></option>
+          <option value="Side Hustle"></option>
+          <option value="Other"></option>
+        </datalist>
+        <datalist id="expense-sources">
+          <option value="Rent / Mortgage"></option>
+          <option value="Property Tax"></option>
+          <option value="Utilities"></option>
+          <option value="Internet"></option>
+          <option value="Cell Phone"></option>
+          <option value="Home Insurance"></option>
+          <option value="Auto Insurance"></option>
+          <option value="Business Insurance"></option>
+          <option value="Life / Health Insurance"></option>
+          <option value="Car Payment / Lease"></option>
+          <option value="Loan Payment"></option>
+          <option value="Credit Card Payment"></option>
+          <option value="Software Subscriptions"></option>
+          <option value="Streaming / Subscriptions"></option>
+          <option value="Childcare"></option>
+          <option value="Gym Membership"></option>
+          <option value="Accounting / Bookkeeping"></option>
+          <option value="Office / Studio Rent"></option>
+          <option value="Other"></option>
+        </datalist>
 
         <div class="budget-totals">
           <div class="budget-total-row">
@@ -236,6 +290,9 @@
         </ul>
       </div>
     </div>
+    <div class="footer-logo">
+      <img src="assets/copper-mountain-logo.png" width="540" height="540" loading="lazy" alt="Bedrock Bookkeeping logo" />
+    </div>
     <div class="footer-bottom">
       <span>&copy; <span data-year></span> Bedrock Bookkeeping. All rights reserved.</span>
       <span>Serving Chilliwack &amp; the Fraser Valley</span>
@@ -246,7 +303,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="js/main.js?v=4" defer></script>
-<script src="js/budget-tracker.js?v=3" defer></script>
+<script src="js/budget-tracker.js?v=4" defer></script>
 <script src="js/worm-game.js?v=3" defer></script>
 </body>
 </html>

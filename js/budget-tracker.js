@@ -21,10 +21,12 @@
     var index = container.querySelectorAll(".budget-row").length + 1;
     var row = document.createElement("div");
     row.className = "budget-row";
+    // the suggestion lists (<datalist>s) live in budget-tracker.html
+    var listId = isExpense ? "expense-sources" : "income-sources";
     var nameField = isExpense
-      ? '<div class="budget-name-wrap"><input type="text" class="budget-row-name" placeholder="' + namePlaceholder + '" aria-label="' + ariaPrefix + " " + index + ' name" />' +
+      ? '<div class="budget-name-wrap"><input type="text" class="budget-row-name" list="' + listId + '" placeholder="' + namePlaceholder + '" aria-label="' + ariaPrefix + " " + index + ' name" />' +
         '<p class="budget-gas-warning">' + gasWarningIcon + gasWarningText + "</p></div>"
-      : '<input type="text" class="budget-row-name" placeholder="' + namePlaceholder + '" aria-label="' + ariaPrefix + " " + index + ' name" />';
+      : '<input type="text" class="budget-row-name" list="' + listId + '" placeholder="' + namePlaceholder + '" aria-label="' + ariaPrefix + " " + index + ' name" />';
     row.innerHTML =
       nameField +
       '<div class="budget-amount-wrap"><span class="budget-currency">$</span>' +

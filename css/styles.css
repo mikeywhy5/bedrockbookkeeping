@@ -169,6 +169,10 @@ input, textarea, select { font: inherit; color: inherit; }
 #whyChooseCapsWord span.is-capped { text-transform: uppercase; }
 /* phones: no scroll-driven fill. Show the finished heading outright; the
    !important beats the --p value the scroll script writes inline. */
+/* phones: the brand name and its "?" run a little larger than "Why Choose" */
+@media (max-width: 767px) {
+  .why-brand { font-size: 1.15em; }
+}
 @media (max-width: 767px) {
   .text-fill-head { --p: 100% !important; }
   #whyChooseCapsWord span { text-transform: uppercase; }
@@ -1322,6 +1326,15 @@ h3, .h3 {
 .footer-col ul { display: flex; flex-direction: column; gap: var(--space-3); }
 .footer-col a, .footer-col li { font-size: var(--font-size-sm); color: var(--color-ink-soft); }
 .footer-col a:hover { color: var(--color-accent); }
+/* The logo file is a flat black square (no transparency) and the page is a
+   slightly warmer black, so "lighten" makes the pure-black background take on
+   whatever is behind it while the copper and white stay as they are. */
+.footer-logo { display: flex; justify-content: center; margin-bottom: var(--space-6); }
+.footer-logo img {
+  width: clamp(150px, 42vw, 210px);
+  height: auto;
+  mix-blend-mode: lighten;
+}
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -1395,6 +1408,10 @@ h3, .h3 {
 @media (min-width: 860px) {
   .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
 }
+/* Business Services page: three cards, so three columns with equal heights */
+@media (min-width: 860px) {
+  .pricing-grid.pricing-grid--three { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+}
 /* ---- SCR Sticky Stacking Cards (phones) ----
    Same trick as the Why Choose cards: each card sticks near the top with a
    slightly bigger offset than the one before, so the next card slides up and
@@ -1413,12 +1430,30 @@ h3, .h3 {
     padding: var(--space-6) var(--space-6) var(--space-5);
   }
   .pricing-grid .pricing-tier:last-child { margin-bottom: 0; }
+  /* homepage only: Catch-Up and Clean-Up (2nd) and Business Startup (4th) */
+  .pricing-grid:not(.pricing-grid--three) .pricing-tier:nth-child(2),
+  .pricing-grid:not(.pricing-grid--three) .pricing-tier:nth-child(4) { border-color: var(--color-accent); }
   .pricing-grid .pricing-tier:nth-child(2) { --i: 1; }
   .pricing-grid .pricing-tier:nth-child(3) { --i: 2; }
   .pricing-grid .pricing-tier:nth-child(4) { --i: 3; }
+  /* orange shimmer across the prices, reusing the headline's shimmer-slide */
+  .pricing-grid .tier-price .amount {
+    background-image: linear-gradient(100deg,
+      var(--color-ink) 0%, var(--color-ink) 40%,
+      var(--color-accent) 50%,
+      var(--color-ink) 60%, var(--color-ink) 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-slide 3.5s linear infinite;
+  }
   .pricing-grid .tier-desc { margin-bottom: var(--space-5); }
   .pricing-grid .tier-price { margin-bottom: var(--space-5); padding-bottom: var(--space-5); }
   .pricing-grid .tier-features { margin-bottom: var(--space-5); }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .pricing-grid .tier-price .amount { animation: none; background: none; color: var(--color-ink); }
 }
 .pricing-tier {
   position: relative;
